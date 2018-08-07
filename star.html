@@ -1,0 +1,107 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+<style type="text/css">
+  .rating {
+  display: inline-block;
+  position: relative;
+  height: 50px;
+  line-height: 50px;
+  font-size: 50px;
+}
+
+.rating label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  cursor: pointer;
+}
+
+.rating label:last-child {
+  position: static;
+}
+
+.rating label:nth-child(1) {
+  z-index: 5;
+}
+
+.rating label:nth-child(2) {
+  z-index: 4;
+}
+
+.rating label:nth-child(3) {
+  z-index: 3;
+}
+
+.rating label:nth-child(4) {
+  z-index: 2;
+}
+
+.rating label:nth-child(5) {
+  z-index: 1;
+}
+
+.rating label input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+.rating label .fa-star {
+  float: left;
+  color: transparent;
+}
+
+.rating label:last-child .fa-star {
+  color: #000;
+}
+
+.rating:not(:hover) label input:checked ~ .fa-star,
+.rating:hover label:hover input ~ .fa-star {
+  color: #09f;
+}
+
+.rating label input:focus:not(:checked) ~ .fa-star:last-child {
+  color: #000;
+  text-shadow: 0 0 5px #09f;
+}
+</style>
+
+<form class="rating">
+  <label>
+    <input type="radio" name="stars" value="1" />
+    <i class="fas fa-star"></i>
+  </label>
+  <label>
+    <input type="radio" name="stars" value="2" />
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+  </label>
+  <label>
+    <input type="radio" name="stars" value="3" />
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i> 
+  </label>
+  <label>
+    <input type="radio" name="stars" value="4" />
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+  </label>
+  <label>
+    <input type="radio" name="stars" value="5" />
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+  </label>
+</form>
+<script type="text/javascript">
+  $(':radio').change(function() {
+  console.log('New star rating: ' + this.value);
+});
+</script>
