@@ -2,94 +2,25 @@
   {% block content %}
   <div class="container-fluid p-5" style="">
     <div class="row p-3">
-
+      {% for content in music %}
       <div class="col-lg-3  col-md-6 py-3">
         <div class="card">
-          <img class="card-img-top" src="./img/li.jpg" alt="Card image cap">
+          <img class="card-img-top" src="{{content.widget_url}}" alt="Card image cap">
           <div class="card-body">
-            <h5 class="card-title">Name</h5>
-            <p class="card-text">Singer</p>
-            <p class="card-text">Cate1, Cate2</p>
+            <h5 class="card-title">{{content.name}}</h5>
+            <p class="card-text">{{content.singer_name}}</p>
+              {% for key,cate in cate %}
+              {% if key == content.id %}
+            <p class="card-text">  
+              {{cate|join(' | ')}}
+            </p>
+              {% endif %}
+              {% endfor %}
           </div>
         </div>
       </div>
+      {% endfor %}
 
-      <div class="col-lg-3  col-md-6 py-3">
-        <div class="card">
-          <img class="card-img-top" src="./img/li.jpg" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">Name</h5>
-            <p class="card-text">Singer</p>
-            <p class="card-text">Cate1, Cate2</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-3  col-md-6 py-3">
-        <div class="card">
-          <img class="card-img-top" src="./img/li.jpg" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">Name</h5>
-            <p class="card-text">Singer</p>
-            <p class="card-text">Cate1, Cate2</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-3  col-md-6 py-3">
-        <div class="card">
-          <img class="card-img-top" src="./img/li.jpg" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">Name</h5>
-            <p class="card-text">Singer</p>
-            <p class="card-text">Cate1, Cate2</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-3  col-md-6 py-3">
-        <div class="card">
-          <img class="card-img-top" src="./img/li.jpg" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">Name</h5>
-            <p class="card-text">Singer</p>
-            <p class="card-text">Cate1, Cate2</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-3  col-md-6 py-3">
-        <div class="card">
-          <img class="card-img-top" src="./img/li.jpg" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">Name</h5>
-            <p class="card-text">Singer</p>
-            <p class="card-text">Cate1, Cate2</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-3  col-md-6 py-3">
-        <div class="card">
-          <img class="card-img-top" src="./img/li.jpg" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">Name</h5>
-            <p class="card-text">Singer</p>
-            <p class="card-text">Cate1, Cate2</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-3  col-md-6 py-3">
-        <div class="card">
-          <img class="card-img-top" src="./img/li.jpg" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">Name</h5>
-            <p class="card-text">Singer</p>
-            <p class="card-text">Cate1, Cate2</p>
-          </div>
-        </div>
-      </div>
 
     </div>
   </div>

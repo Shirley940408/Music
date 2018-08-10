@@ -17,7 +17,7 @@
   </head>
   <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-info text-white">
-    <a class="navbar-brand text-white" href="#">StarMusics</a>
+    <a class="navbar-brand text-white" href="/StarMusic/">{{name}}</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -25,15 +25,16 @@
     <div class="collapse navbar-collapse " id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto ">
         <li class="nav-item active">
-          <a class="nav-link text-white" href="#">Home<span class="sr-only">(current)</span></a>
+          <a class="nav-link text-white" href="/StarMusic/">Home<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
            Categories
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Cate1</a>
-            <a class="dropdown-item" href="#">Cate2</a>
+           {% for cates in cates %}
+            <a class="dropdown-item" href="/StarMusic/category/get/{{cates.id}}">{{cates.name}}</a>
+           {% endfor %}
           </div>
         </li>
       </ul>
@@ -54,8 +55,27 @@
 </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      $("#submit").click(function(){
+      console.log($(this).data('mid'));
+      var comment=$("#user_input").val();
+      var mid=$(this).data('mid');
+      $.post(
+        '/StarMusic/comment/submit',
+        {
+          "mid": m_id,
+          "content":content
+        },
+        function(data){
+          console.log(123);
+        },
+        'json'
+        )
+      })
+
+    </script>
   </body>
 </html>
