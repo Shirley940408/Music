@@ -71,7 +71,7 @@ class DB{
         return $result;
     }
         public function getCommentByID($id){
-        $stmt=$this->getInstance()->prepare('SELECT * FROM comments WHERE id = :id');
+        $stmt=$this->getInstance()->prepare('SELECT * FROM comments WHERE m_id = :id');
     	$stmt->execute(
     		array(
     			':id'=>$id
@@ -80,11 +80,24 @@ class DB{
     	$result=$stmt->fetchAll(PDO::FETCH_ASSOC);
     	return $result;
         }
+        public function insertComment($mid, $content){
+         $stmt=$this->getInstance()->prepare('INSERT INTO comments(m_id,date, content) VALUES(:mid,:date,:content)');
+             var_dump(date('Y-m-d h:i:s'));
+                $result=$stmt->execute(
+                    array(
+                        ':mid'=>$mid,
+                        ':date'=>date('Y-m-d h:i:s'),
+                        ':content'=>$content
+
+                    )
+                );
+                return $result;           
+        }
 
 }
 
-// $db=new DB();
-// print_r($db->getCategoriesByID(1));
+$db=new DB();
+// print_r($db->insertComment(1,'lalala'));
 
 
 
