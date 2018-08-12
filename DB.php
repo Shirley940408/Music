@@ -26,6 +26,26 @@ class DB{
     	$result=$stmt->fetch(PDO::FETCH_ASSOC);
     	return $result;
     }
+    public function getMusicByName($name){
+        $stmt=$this->getInstance()->prepare('SELECT * FROM musics WHERE name LIKE :name');
+        $stmt->execute(
+            array(
+                ':name'=>$name.'%'
+            )
+        );
+        $result=$stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;        
+    }
+        public function getMusicBySinger($name){
+        $stmt=$this->getInstance()->prepare('SELECT * FROM musics WHERE singer_name LIKE :name');
+        $stmt->execute(
+            array(
+                ':name'=>$name.'%'
+            )
+        );
+        $result=$stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;        
+    }
     public function getMusicOrder(){
     	$stmt=$this->getInstance()->prepare('SELECT * FROM musics ORDER BY (total_score/score_num) DESC LIMIT 3');
     	$stmt->execute();

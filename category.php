@@ -40,7 +40,7 @@ class category{
 	    		'name' => 'AsiaMusic',
 	    		'music' => $musics,
 	    		'cate' => $Music_to_Cate,
-	    		'cates'=>$cates
+	    		'cates'=> $cates
 	    	)
 	    );
     }

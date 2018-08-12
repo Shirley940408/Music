@@ -11,7 +11,7 @@
             <h5 class="card-title">{{content.name}}</h5>
             <p class="card-text">{{content.singer_name}}</p>
               {% for key,cate in cate %}
-              {% if key == content.id %}
+              {% if key == content.name %}
             <p class="card-text">  
               {{cate|join(' | ')}}
             </p>
