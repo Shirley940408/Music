@@ -114,10 +114,34 @@ class DB{
                 return $result;           
         }
 
+        public function insertScore($mid, $score){
+         $stmt=$this->getInstance()->prepare('INSERT INTO score(m_id,date, score) VALUES(:mid,:date,:score)');
+             var_dump(date('Y-m-d h:i:s'));
+                $result=$stmt->execute(
+                    array(
+                        ':mid'=>$mid,
+                        ':date'=>date('Y-m-d h:i:s'),
+                        ':score'=>$score
+
+                    )
+                );
+                return $result;           
+        }
+        public function updateMusic($mid, $score){
+        $stmt=$this->getInstance()->prepare('UPDATE musics SET total_score = total_score + :score, score_num = score_num + 1 WHERE id= :id');
+        $result=$stmt->execute(
+            array(
+                ':id'=>$mid,
+                ':score'=>$score
+            )
+        );
+        return $result;
+        }
+
 }
 
 $db=new DB();
-// print_r($db->insertComment(1,'lalala'));
+// print_r($db->updateMusic(1, 4));
 
 
 

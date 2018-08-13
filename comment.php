@@ -7,7 +7,9 @@ class comment{
 	}
     public function submitMethod(){
     	$result=$this->db->insertComment($_POST['mid'], $_POST['content']);
-    	echo $result;
+    	// echo $result;
+        $res=$this->db->insertScore($_POST['mid'], $_POST['score']);
+        $ress=$this->db->updateMusic($_POST['mid'], $_POST['score']);
     	header("Access-Control-Allow-Origin:*");
         header("Content-Type:application/json;charset=UTF-8");
     	if($result){
@@ -23,7 +25,6 @@ class comment{
     	}
     	echo json_encode($message); 
     }
-
 }
 
 // $aaa=new comment($db);
