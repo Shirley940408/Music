@@ -31,8 +31,18 @@ if(array_key_exists('url',$_GET)){
 	$cate=$db->getAllCategories();
 	$banner_url=$db->getMusicOrder();
 	$picture=array();
+	$musicName=array();
+	$singerName=array();
+	$num=array();
+	$total=array();
+	$key=array();
 	foreach ($banner_url as $val){
+		$key[]=$val['id'];
 		$picture[]=$val['banner_url'];
+		$musicName[]=$val['name'];
+		$singerName[]=$val['singer_name'];
+		$num[]=$val['score_num'];
+		$total[]=$val['total_score'];
 	}
 	// print_r($picture);
 	$musicToCate=array();
@@ -51,8 +61,13 @@ if(array_key_exists('url',$_GET)){
 		array(
 			'name' =>$name,
 			'music'=>$music,
+			'musicName'=>$musicName,
+			'singer'=>$singerName,
+			'number'=>$num,
+			'total'=>$total,
 			'cate'=>$musicToCate,
 			'banner'=>$picture,
+			'key'=>$key,
 			'cates'=>$cate
 		)
 	);
