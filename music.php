@@ -8,6 +8,10 @@ class music{
 	public function getMethod($id){
 		$music=$this->db->getMusicByID($id);
 		$cate_to_music=$this->db->fetchMusicCates($id);
+<<<<<<< HEAD
+		$username=$this->db->getUsers();
+=======
+>>>>>>> 2ad2f5048419d5d97f549ae835ecf26d7066bf33
 		$str='';
     	foreach($cate_to_music as $value){
     		$cid=$value['c_id']; 		
@@ -24,7 +28,12 @@ class music{
 	    		'cate'=>$str,
 	    		'comment'=>$comment,
 	    		'name'=>"AsiaMusic",
+<<<<<<< HEAD
+	    		'cates'=>$cates,
+	    		'username'=>$username
+=======
 	    		'cates'=>$cates
+>>>>>>> 2ad2f5048419d5d97f549ae835ecf26d7066bf33
 			)
 	    );
 	}

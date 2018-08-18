@@ -14,19 +14,46 @@ require_once("./DB.php")
     <title>Hello, world!</title>
   </head>
   <body>
+    <?php
+      $login_wrong=false;
+      if ($_POST){
+        $result=$db->loginCheck($_POST['user-email'],$_POST['user-pwd']);
+        // var_dump($result);
+        if($result){
+          $newURL="/StarMusic/";
+          // 
+          session_start();
+          $_SESSION['id']=$result['id'];
+          $_SESSION['email']=$result['email'];
+          header('Location:'.$newURL);
+
+        }else{
+        $login_wrong=true;
+        }
+      }
+    ?>
     <div class="container mx-auto p-5">
     <div class="jumbotron m-5 p-5">
       <h1 class="display-4">Login</h1>
-      <form>
+      <form action="" method="POST">
         <div class="form-group">
           <label for="exampleInputEmail1">username</label>
-          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="username">
+          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="username" name="user-email">
         </div>
         <div class="form-group">
           <label for="exampleInputPassword1">Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="user-pwd">
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
+            <?php 
+           if($login_wrong){
+           ?>
+              <div class="alert alert-warning" role="alert">
+              Login Error! Password is wrong!
+            </div>
+          <?php
+            }
+          ?>
       </form>
     </div>      
     </div>
