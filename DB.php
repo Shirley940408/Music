@@ -102,7 +102,7 @@ class DB{
         }
         public function insertComment($mid, $content){
          $stmt=$this->getInstance()->prepare('INSERT INTO comments(m_id,date, content) VALUES(:mid,:date,:content)');
-             var_dump(date('Y-m-d h:i:s'));
+             // var_dump(date('Y-m-d h:i:s'));
                 $result=$stmt->execute(
                     array(
                         ':mid'=>$mid,
@@ -116,7 +116,7 @@ class DB{
 
         public function insertScore($mid, $score){
          $stmt=$this->getInstance()->prepare('INSERT INTO score(m_id,date, score) VALUES(:mid,:date,:score)');
-             var_dump(date('Y-m-d h:i:s'));
+             // var_dump(date('Y-m-d h:i:s'));
                 $result=$stmt->execute(
                     array(
                         ':mid'=>$mid,
