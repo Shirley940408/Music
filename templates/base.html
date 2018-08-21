@@ -68,20 +68,17 @@
       var score=$("#score").text();
       // console.log(score);
       var mid=$(this).data('mid');
-<<<<<<< HEAD
+
       // console.log(comment);
-=======
+
       console.log(comment);
->>>>>>> 2ad2f5048419d5d97f549ae835ecf26d7066bf33
+
       $.post(
         '/StarMusic/comment/submit',
         {
           "mid": mid,
-          "content":comment,
-<<<<<<< HEAD
-          // "username":username,
-          "score":score
-
+          "content": comment,
+          "score": score
         },
         function(data){
           console.log(data);
@@ -106,16 +103,9 @@
                   <p>`+data.comment+`</p>
                 </div>`);
           }
-=======
-          "score":score
-        },
-        function(data){
-          // console.log(data);
-          console.log(data);
->>>>>>> 2ad2f5048419d5d97f549ae835ecf26d7066bf33
-        },
-        "json");
-      });
+        });
+       });
+
 
     $(document).ready(function($){
         
